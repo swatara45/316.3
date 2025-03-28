@@ -79,3 +79,20 @@ The event listener should add the active class to the <a> element that was
 The event listener should remove the active class from each other <a> element in topMenuLinks - whether the active class exists or not.
 Hint: Removing a non-existent class from an element does not cause an error!
 Progress Check - Clicking any of the links should make that link active and clear the others. Clicking an active link should clear that link. Here is what it should look like so far, with "CATALOG" active:
+
+Part 5: Adding Submenu Interaction
+Within the same event listener, we want to toggle the submenu between active and non-active states. First, we will set the submenu to show or hide itself depending on the menu state:
+Within the event listener, if the clicked <a> element does not yet have a class of "active" (it was inactive when clicked):
+If the clicked <a> element's "link" object within menuLinks has a subLinks property (all do, except for the "link" object for ABOUT), set the CSS top property of subMenuEl to 100%.
+Otherwise, set the CSS top property of subMenuEl to 0.
+Hint: Caching the "link" object will come in handy for passing its subLinks array later.
+Progress Check - Ensure that clicking CATALOG, ORDERS, etc. shows the submenu bar, and that clicking them again hides it. Clicking ABOUT should not show the submenu bar.
+The submenu needs to be dynamic based on the clicked link. To facilitate that, we will create a helper function called buildSubmenu that does the following:
+Clear the current contents of subMenuEl.
+Iterate over the subLinks array, passed as an argument, and for each "link" object:
+Create an <a> element.
+Add an href attribute to the <a>, with the value set by the href property of the "link" object.
+Set the element's content to the value of the text property of the "link" object.
+Append the new element to the subMenuEl.
+Once you have created your helper function, include it in the event listener within the same logic that shows the submenu, remembering to pass the array of sub-links as an argument.
+Progress Check - Here is what the page should look like so far:
