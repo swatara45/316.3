@@ -92,15 +92,15 @@ var menuLinks = [
 ];
 
 // 2. Attach a delegated 'click' event listener to topMenuEl.
-  // - The first line of code of the event listener function should call the event object's preventDefault() method.
-  // - The second line of code of the function should immediately return if the element clicked was not an <a> element.
-  // - Log the content of the <a> to verify the handler is working.
+  // The first line of code of the event listener function should call the event object's preventDefault() method.
+  // The second line of code of the function should immediately return if the element clicked was not an <a> element.
+  // Log the content of the <a> to verify the handler is working.
   const topMenuLinks = topMenuEl.querySelectorAll('a');
   topMenuEl.addEventListener('click', function(event) {
     // - Prevent the default behavior of the <a> element (i.e., the navigation)
     event.preventDefault();
   
-    // -  Return if the element clicked was not an <a> element
+    //  Return if the element clicked was not an <a> element
     if (event.target.tagName !== 'A')  return;
     ///////
     // Get the clicked link text to find the corresponding "link" object
@@ -110,26 +110,22 @@ var menuLinks = [
     const clickedLinkObj = menuLinks.find(link => link.text === clickedLinkText);
   
   
-  
-  
-  
-    // Log the content of the clicked <a> element
-    // console.log(event.target.textContent);
-  
+
   // Now that we have references to each of these links, and a registered event listener, we will want to add a toggled "active" state to each menu item, showing whether or not it is currently selected:
     
-  // 1. The event listener should add the active class to the <a> element that was clicked, unless it was already active, in which case it should remove it.
+  // The event listener should add the active class to the <a> element that was clicked, unless it was already active, in which case it should remove it.
   
   if (event.target.classList.contains('active')) {
     event.target.classList.remove('active');
     // Hide the submenu if the active class is removed
     subMenuEl.style.top = '0';
   } else {
-    // 2. The event listener should remove the active class from each other <a> element in topMenuLinks - whether the active class exists or not.
+    // The event listener should remove the active class from each other <a> element in topMenuLinks - whether the active class exists or not.
     topMenuLinks.forEach(link => link.classList.remove('active'));
   
-  
-    // 4. Update the contents of mainEl with an <h1> element containing the clicked submenu item's text
+  //Part 5
+
+    //  Update the contents of mainEl with an <h1> element containing the clicked submenu item's text
     mainEl.innerHTML = `<h1>${event.target.textContent}</h1>`;
     
     // Add 'active' class to the clicked link
